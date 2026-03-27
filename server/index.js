@@ -15,10 +15,6 @@ app.get('/hello', (req, res) => {
 });
 app.use('/api/admin', require('./api/admin.js'));
 
-// start server
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
-});
 
 // apis
 app.use('/api/customer', require('./api/customer.js'));
@@ -30,4 +26,9 @@ app.get('admin/*', (req, res) => {
 app.use('/', express.static(path.resolve(__dirname, '../client-customer/build')));
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client-customer/build', 'index.html'));
+});
+
+// start server
+app.listen(PORT, () => {
+  console.log(`Server listening on ${PORT}`);
 });
